@@ -1,12 +1,12 @@
 # ShopApp
 
- # Description
+ ## Description
 
 it is a simple application that allows you to present a list of the different nearby shops. It also gives the user the opportunity to choose the stores he prefers and add them to the list of Prefered shops. On the other hand it allows him to hide a shop he does not like temporarily .
 
-# Getting Started
+## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes
-## Prerequisites
+### Prerequisites
 Before implementing our application, you will need to install several tools such as:    
 * Atom,  
 * Github Desktop,  
@@ -14,7 +14,7 @@ Before implementing our application, you will need to install several tools such
 * Composer
 * Laravel Framework: Backend,  
 * VueJS: Frontend  
-## Installing  
+### Installing  
 First of all, you will create your Laravel project and install it using the Composer  
 `composer create-project --prefer-dist laravel/laravel ShopApp`  
 Then we move on to our working directory   
@@ -234,6 +234,16 @@ It will look like this :
        },
        ready: function() {
          this.getShops(this.pagination.current_page);
+         //dislike a shop and keep it hideen
+    var $tab = $('#tab');
+    if(localStorage.getItem("#tab")) {
+        $tab.html(localStorage.getItem("#tab"));
+    }
+    $("#tab").on('click','.btn-danger',function(){
+          $(this).closest('tr').remove();
+          localStorage.setItem("#tab", $tab.html());
+          setTimeout(function(){localStorage.removeItem("#tab");}, 1000*60*120);
+        });
        },
        methods: {
          getShops: function(page) {
@@ -488,7 +498,7 @@ The second view is "index.blade.php" which contains the list of shops sorted by 
       </nav>
     @stop
 
-## Authors
+### Authors
 
 * Othmane Essarsri
 
