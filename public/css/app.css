@@ -3020,7 +3020,7 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 22px;
+  margin-bottom: 40px;
 }
 
 .table > thead > tr > th,
@@ -8349,4 +8349,3 @@ button.close {
     display: none !important;
   }
 }
-
